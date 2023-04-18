@@ -1,0 +1,78 @@
+<%-include('header.ejs')-%>
+
+<section class="content">
+    <div class="block-header">
+        <div class="row">
+            <div class="col-lg-7 col-md-5 col-sm-12">
+                <h2>Payments
+                <small class="text-muted">Welcome to Oreo</small>
+                </h2>
+            </div>
+            <div class="col-lg-5 col-md-7 col-sm-12">
+                <ul class="breadcrumb float-md-right">
+                    <li class="breadcrumb-item"><a href="index.html"><i class="zmdi zmdi-home"></i> Oreo</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0);">Payments</a></li>
+                    <li class="breadcrumb-item active">Payments</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <!-- Basic Examples -->
+        <div class="row clearfix">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="header">
+                        <h2><strong>List</strong> </h2>
+                        <ul class="header-dropdown">
+                            <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="zmdi zmdi-more"></i> </a>
+                                <ul class="dropdown-menu dropdown-menu-right slideUp float-right">
+                                    <li><a href="javascript:void(0);">Action</a></li>
+                                    <li><a href="javascript:void(0);">Another action</a></li>
+                                    <li><a href="javascript:void(0);">Something else</a></li>
+                                </ul>
+                            </li>
+                            <li class="remove">
+                                <a role="button" class="boxs-close"><i class="zmdi zmdi-close"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                <thead>
+                                    <tr>
+                                        <th>Bill No</th>
+                                        <th>Pat Name</th>
+                                        <th>Doctor name</th>
+                                        <th>Pay Date</th> 
+                                        <th>Total Amount</th>
+                                        <th>Discount</th>                                            
+                                        <th>Pay method</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <%pay_info.forEach(function(pay_info) { %>
+                                    <tr>
+                                        <td><%= pay_info.pay_number %></td>
+                                        <td><%= pay_info.pat_name %></td>
+                                        <td><%= pay_info.doc_name %></td>
+                                        <td><%= pay_info.pay_date %></td>
+                                        <td><%= pay_info.tot_amount %></td>
+                                        <td><%= pay_info.Discount %></td>
+                                        <td><%= pay_info.pay_method %></td>
+                                        <td><%= pay_info.tot_amount%></td>
+                                    </tr>
+                                    <% }); %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>                
+    </div>
+</section>
+
+<%-include('footer.ejs')-%>

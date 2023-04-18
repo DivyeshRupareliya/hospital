@@ -1,0 +1,110 @@
+<%-include('header.ejs')-%>
+<section class="content">
+    <div class="block-header">
+        <div class="row">
+            <div class="col-lg-7 col-md-5 col-sm-12">
+                <h2>Rescheduled Appointment
+                <small>Welcome to Oreo</small>
+                </h2>
+            </div>
+            <div class="col-lg-5 col-md-7 col-sm-12">
+                <ul class="breadcrumb float-md-right">
+                    <li class="breadcrumb-item"><a href="index.html"><i class="zmdi zmdi-home"></i> Oreo</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0);">Rescheduled</a></li>
+                    <li class="breadcrumb-item active">Rescheduled Appointment</li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>    
+    <div class="container-fluid">        
+        <div class="row clearfix">
+			<div class="col-lg-12 col-md-12 col-sm-12">
+				<div class="card">
+					<div class="header">
+						<h2><strong>Rescheduled</strong> Appointment<small>Description text here...</small> </h2>
+						<ul class="header-dropdown">                            
+                            <li class="remove">
+                                <a role="button" class="boxs-close"><i class="zmdi zmdi-close"></i></a>
+                            </li>
+                        </ul>
+					</div>
+                    <form action="scheduled_update" method="post">
+                        <div class="body">
+                        <% all_info.forEach(function(all_info) { %>
+                            <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="First Name" name="pat_fname" value="<%= all_info.pat_fname %>">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Last Name" name="pat_lname" value="<%= all_info.pat_lname %>">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Age" name="pat_age" value="<%= all_info.pat_age %>">
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <select class="form-control show-tick" name="sel_doctor" value="<%= all_info.sel_doctor %>"> 
+                                        <option selected="selected">Select Doctor</option>
+                                        <% data.forEach(function(data) { %>
+                                        <option><%= data.doc_fname %></option>
+                                        <% }); %>
+                                </select>
+                                </div>
+                                <div class="col-sm-3">
+                                    <select class="form-control show-tick" name="sel_department" value="<%= all_info.sel_department %>">
+                                        <option selected="selected" >Select Department</option>
+                                        <option>Cardiology</option>
+                                        <option>Pulmonology</option>
+                                        <option>Gynecology</option>
+                                        <option>Neurology</option>
+                                        <option>Urology</option>
+                                        <option>Gastrology</option>
+                                        <option>Pediatrician</option>
+                                        <option>Laboratory</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Enter Mobile number" name="pat_number" value="<%= all_info.pat_number %>">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-sm-3">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="zmdi zmdi-calendar"></i>
+                                        </span>
+                                        <input type="text" class="form-control " placeholder="Please choose date & time..." name="pat_apoi_date" value="<%= all_info.pat_apoi_date %>">
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Enter Email ID" name="pat_email" value="<%= all_info.pat_email %>">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <input type="submit" value="Submit" class="btn btn-primary btn-round">
+                                    <!-- <button type="submit" class="btn btn-primary btn-round">Submit</button> -->
+                                    <!-- <button type="submit" class="btn btn-default btn-round btn-simple">Cancel</button> -->
+                                </div>
+                            </div>
+                        <% }); %>
+                        </div>
+                    </form>
+				</div>
+			</div>
+		</div>
+    </div>
+
+</section>
+<%-include('footer.ejs')-%>

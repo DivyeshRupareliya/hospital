@@ -1,0 +1,103 @@
+<%-include('header.ejs')-%>
+
+<section class="content">
+    <div class="block-header">
+        <div class="row">
+            <div class="col-lg-7 col-md-5 col-sm-12">
+                <h2>All Patients
+                <small class="text-muted">Welcome to Oreo</small>
+                </h2>
+            </div>
+            <div class="col-lg-5 col-md-7 col-sm-12">
+                <button class="btn btn-primary btn-icon btn-round d-none d-md-inline-block float-right m-l-10" type="button">
+                    <i class="zmdi zmdi-plus"></i>
+                </button>
+                <ul class="breadcrumb float-md-right">
+                    <li class="breadcrumb-item"><a href="index.html"><i class="zmdi zmdi-home"></i> Oreo</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0);">Patients</a></li>
+                    <li class="breadcrumb-item active">All Patients</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row clearfix">
+            <div class="col-md-12">
+                <div class="card patients-list">
+                    <div class="header">
+                        <h2><strong>Patients</strong> List</h2>
+                        <ul class="header-dropdown">
+                            <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="zmdi zmdi-more"></i> </a>
+                                <ul class="dropdown-menu dropdown-menu-right slideUp">
+                                    <li><a href="javascript:void(0);">Action</a></li>
+                                    <li><a href="javascript:void(0);">Another action</a></li>
+                                    <li><a href="javascript:void(0);">Something else</a></li>
+                                </ul>
+                            </li>
+                            <li class="remove">
+                                <a role="button" class="boxs-close"><i class="zmdi zmdi-close"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="body">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs padding-0">
+                            <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#All">All</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#USA">USA</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#India">India</a></li>
+                        </ul>
+                            
+                        <!-- Tab panes -->
+                        <div class="tab-content m-t-10">
+                            <div class="tab-pane table-responsive active" id="All">
+                                <table class="table m-b-0 table-hover">
+                                    <thead>
+                                        <tr>                                       
+                                            <th>Fname</th>
+                                            <th>Lname</th>
+                                            <th>Age</th>
+                                            <th>Doctor Name</th>
+                                            <th>Department</th>
+                                            <th>Number</th>
+                                            <th>Apooiment Date</th>
+                                            <th>Email ID</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <%pat.forEach(function(pat) { %>
+                                        <tr>
+                                            <!-- <td><span class="list-icon"><img class="patients-img" src="../assets/images/xs/avatar1.jpg" alt=""></span></td> -->
+                                            <td><span class="list-name"><%= pat.pat_fname %></span></td>
+                                            <td><%= pat.pat_lname %></td>
+                                            <td><%= pat.pat_age %></td>
+                                            <td><%= pat.sel_doctor %></td>
+                                            <td><%= pat.sel_department %></td>
+                                            <td><%= pat.pat_number %></td>
+                                            <td><%= pat.pat_apoi_date %></td>
+                                            <td><%= pat.pat_email %></td>
+                                            <!-- <td><span class="badge badge-success">Approved</span></td> -->
+                                            <!-- <td><input type="submit" value="Approved" class="badge badge-success" name="Approved"></td> -->
+                                            <!-- <form action="All_appoiment" method="post" value="value"> -->
+                                            
+                                            <form action="All_appoiment" method="post">
+                                                <!-- <td><span class="badge badge-success"> <input type="submit"  name="sent"  value=<%-pat.pat_email-%>></span></td> -->
+                                                <% if(pat.__v == 0 ) { %>
+                                                <td><span class="badge badge-success"> <button name="sent" value="<%= pat.pat_email %>" id="btn" style="border: none; background-color: transparent; color: red;"> Approve</button></span></td>
+                                                <% } else { %>
+                                                    <td><span class="badge badge-success"> <button type="button" style="border: none; background-color: transparent; color: green;"> Accepted</button></span></td>
+                                                <% } %>
+                                            </form>
+                                        </tr>
+                                        <% }); %>
+                                    </tbody>
+                                </table>                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<%-include('footer.ejs')-%>
